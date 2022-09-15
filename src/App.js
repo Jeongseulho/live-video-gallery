@@ -13,48 +13,47 @@ function App() {
 
   const [isClickThumbnail, setIsClickThumbnail] = useState(false);
   const [videosInfoArray, setVideosInfoArray] = useState([]);
-  const my_key = "AIzaSyDZ9qZzvGR0UrMEBz7ltAx-xzon4skr22w";
-
-  const getAllPlayList = async (key) => {
-    try {
-      const response = await fetch(
-        `https://www.googleapis.com/youtube/v3/playlists?part=snippet&channelId=UC6cAgLyar-QK2NInG7knd1Q&key=${key}`
-      );
-      const result = await response.json();
-      const playListIdArray = result.items.map((item) => {
-        return {
-          id: item.id,
-          tag: item.snippet.title,
-        };
-      });
-      return playListIdArray;
-    } catch (error) {
-      console.log("error", error);
-    }
-  };
-
-  const getPlayListInfo = async (key, playListId, tag) => {
-    try {
-      const response = await fetch(
-        `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&key=${key}&maxResults=20&playlistId=${playListId}`
-      );
-      const playListInfo = await response.json();
-
-      const myPlayListInfo = playListInfo.items.map((videoInfo) => {
-        return {
-          id: videoInfo.id,
-          title: videoInfo.snippet.title,
-          thumbnail_url: videoInfo.snippet.thumbnails.medium.url,
-          tag,
-        };
-      });
-      return myPlayListInfo;
-    } catch (error) {
-      console.log("error", error);
-    }
-  };
 
   useEffect(() => {
+    const getAllPlayList = async (key) => {
+      try {
+        const response = await fetch(
+          `https://www.googleapis.com/youtube/v3/playlists?part=snippet&channelId=UC6cAgLyar-QK2NInG7knd1Q&key=${key}`
+        );
+        const result = await response.json();
+        const playListIdArray = result.items.map((item) => {
+          return {
+            id: item.id,
+            tag: item.snippet.title,
+          };
+        });
+        return playListIdArray;
+      } catch (error) {
+        console.log("error", error);
+      }
+    };
+
+    const getPlayListInfo = async (key, playListId, tag) => {
+      try {
+        const response = await fetch(
+          `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&key=${key}&maxResults=20&playlistId=${playListId}`
+        );
+        const playListInfo = await response.json();
+
+        const myPlayListInfo = playListInfo.items.map((videoInfo) => {
+          return {
+            id: videoInfo.id,
+            title: videoInfo.snippet.title,
+            thumbnail_url: videoInfo.snippet.thumbnails.medium.url,
+            tag,
+          };
+        });
+        return myPlayListInfo;
+      } catch (error) {
+        console.log("error", error);
+      }
+    };
+
     async function getAllVideosInfo(key) {
       const playListIdArray = await getAllPlayList(key);
 
@@ -67,7 +66,7 @@ function App() {
 
       setVideosInfoArray(myAllPlayListInfo);
     }
-    getAllVideosInfo(my_key);
+    getAllVideosInfo(process.env.REACT_APP_API_KEY);
   }, []);
 
   return (
