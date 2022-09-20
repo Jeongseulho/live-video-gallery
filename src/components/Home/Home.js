@@ -12,7 +12,6 @@ const Title = styled.span`
   top: 10%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border: 3px solid black;
 `;
 
 const MyLink = styled(Link)``;

@@ -5,8 +5,8 @@ import { Spin } from "antd";
 
 const ItemWrapp = styled.div`
   position: relative;
-  width: 1280px;
-  height: 720px;
+  width: 640px;
+  height: 360px;
 `;
 
 const LoadingIcon = styled(Spin)`
@@ -29,8 +29,6 @@ function Item({ id, isFocused }) {
             url={`https://www.youtube.com/watch?v=${id}`}
             controls={true}
             onReady={() => setIsVideoReady(true)}
-            width="1280px"
-            height="720px"
           />
         </ItemWrapp>
       ) : (

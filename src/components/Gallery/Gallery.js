@@ -6,8 +6,8 @@ import { LeftSquareTwoTone, RightSquareTwoTone } from "@ant-design/icons";
 import Thumbnail from "./Thumbnail";
 
 const VideosWrapp = styled.div`
-  width: 1280px;
-  height: 720px;
+  width: 640px;
+  height: 360px;
   overflow: hidden;
   position: relative;
   margin: 0 5px;
@@ -17,7 +17,7 @@ const AllVideosWrapp = styled.div`
   display: flex;
   justify-content: center;
   position: absolute;
-  transform: ${(props) => `translateX(-${1280 * props.currentImgIndex}px)`};
+  transform: ${(props) => `translateX(-${640 * props.currentImgIndex}px)`};
   transition: all 2s ease-in-out;
 `;
 
@@ -156,7 +156,7 @@ function Gallery() {
               : { ...videosInfo, isFocused: false }
           )
         );
-        console.log(videosInfoArray);
+
         return;
 
       case "current":
@@ -168,7 +168,7 @@ function Gallery() {
               : { ...videosInfo, isFocused: false }
           )
         );
-        console.log(videosInfoArray);
+
         return;
 
       case "next":
@@ -179,7 +179,7 @@ function Gallery() {
               : { ...videosInfo, isFocused: false }
           )
         );
-        console.log(videosInfoArray);
+
         return;
 
       default:
