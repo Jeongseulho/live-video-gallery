@@ -24,3 +24,4 @@ yarn-error.log*
 
 #API_KEY
 .env
+*.mp4

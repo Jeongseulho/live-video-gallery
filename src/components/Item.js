@@ -1,27 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import ReactPlayer from "react-player";
+import { Spin } from "antd";
 
 const ItemWrapp = styled.div`
-  display: flex;
-  flex-direction: column;
-  background-color: #e2e2e2;
-  & > img {
-    width: 100%;
-    height: 100%;
-  }
+  position: relative;
+  width: 1280px;
+  height: 720px;
 `;
 
-function Item({ id, title, thumbnail_url, tag, setIsClickThumbnail }) {
+const LoadingIcon = styled(Spin)`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  display: ${(props) => (props.$isVideoReady ? "none" : "")};
+`;
+
+function Item({ id, isFocused }) {
+  const [isVideoReady, setIsVideoReady] = useState(false);
+
   return (
-    <ItemWrapp>
-      <h3>{title}</h3>
-      <img
-        src={thumbnail_url}
-        alt={"loading"}
-        onClick={() => setIsClickThumbnail(true)}
-      />
-      <p>{`#${tag}`}</p>
-    </ItemWrapp>
+    <>
+      {isFocused ? (
+        <ItemWrapp>
+          <LoadingIcon tip="Loading..." $isVideoReady={isVideoReady} />
+          <ReactPlayer
+            url={`https://www.youtube.com/watch?v=${id}`}
+            controls={true}
+            onReady={() => setIsVideoReady(true)}
+            width="1280px"
+            height="720px"
+          />
+        </ItemWrapp>
+      ) : (
+        <ItemWrapp>
+          <LoadingIcon tip="Loading..." $isVideoReady={isVideoReady} />
+        </ItemWrapp>
+      )}
+    </>
   );
 }
 
