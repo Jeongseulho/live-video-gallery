@@ -5,6 +5,7 @@ import styled from "styled-components";
 const HomeWrapp = styled.div`
   background-image: url("/assets/Home.jpg");
   height: 100%;
+  width: 100%;
 `;
 
 const Title = styled.span`
@@ -14,14 +15,13 @@ const Title = styled.span`
   transform: translate(-50%, -50%);
 `;
 
-const MyLink = styled(Link)``;
 function Home() {
   return (
     <HomeWrapp>
       <Title>
         <h1>Title</h1>
         <h5>description</h5>
-        <MyLink to="/gallery"> 갤러리로 </MyLink>
+        <Link to="/ALL"> 갤러리로 </Link>,
       </Title>
     </HomeWrapp>
   );

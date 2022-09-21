@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import ReactPlayer from "react-player";
-import { Spin } from "antd";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const ItemWrapp = styled.div`
   position: relative;
@@ -9,11 +9,11 @@ const ItemWrapp = styled.div`
   height: 360px;
 `;
 
-const LoadingIcon = styled(Spin)`
+const LoadingIcon = styled(CircularProgress)`
   position: absolute;
   top: 50%;
   left: 50%;
-  z-index: 1;
+  z-index: -1;
   display: ${(props) => (props.$isVideoReady ? "none" : "")};
 `;
 
@@ -24,7 +24,7 @@ function Item({ id, isFocused }) {
     <>
       {isFocused ? (
         <ItemWrapp>
-          <LoadingIcon tip="Loading..." $isVideoReady={isVideoReady} />
+          <LoadingIcon $isVideoReady={isVideoReady} />
           <ReactPlayer
             url={`https://www.youtube.com/watch?v=${id}`}
             controls={true}
@@ -33,7 +33,7 @@ function Item({ id, isFocused }) {
         </ItemWrapp>
       ) : (
         <ItemWrapp>
-          <LoadingIcon tip="Loading..." $isVideoReady={isVideoReady} />
+          <LoadingIcon $isVideoReady={isVideoReady} />
         </ItemWrapp>
       )}
     </>
