@@ -8,11 +8,10 @@ import TextField from "@mui/material/TextField";
 
 const HeaderWrapp = styled(Stack)`
   padding-top: 10px;
-
   position: fixed;
-
   background-color: #fff;
   width: 100%;
+  z-index: 100;
 
   & > h5 {
     flex: 1;

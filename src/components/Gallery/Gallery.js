@@ -1,25 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Item from "./Item";
 import styled from "styled-components";
-import Thumbnail from "./Thumbnail";
+
 import Header from "./Header";
-import ArrowCircleRightTwoToneIcon from "@mui/icons-material/ArrowCircleRightTwoTone";
-import ArrowCircleLeftTwoToneIcon from "@mui/icons-material/ArrowCircleLeftTwoTone";
-
-const VideosWrapp = styled.div`
-  width: 640px;
-  height: 360px;
-  overflow: hidden;
-  position: relative;
-`;
-
-const AllVideosWrapp = styled.div`
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  transform: ${(props) => `translateX(-${640 * props.currentImgIndex}px)`};
-  transition: all 2s ease-in-out;
-`;
+import GallerySlide from "./GallerySlide";
+import ThumbnailSlide from "./ThumbnailSlide";
 
 const BackGroundVideoWrapp = styled.div`
   position: fixed;
@@ -44,23 +28,12 @@ const BackGroundVideoWrapp = styled.div`
   }
 `;
 
-const GallerySlide = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 20px;
-`;
-
-const ThumbnailWrapp = styled.div`
-  display: flex;
-`;
-
 const WhiteBoxWrapp = styled.div`
   position: absolute;
-  left: 10%;
+  left: 5%;
   top: 25%;
-  width: 80%;
-  height: 70%;
+  width: 90%;
+  height: 80%;
   background-color: rgba(255, 255, 255, 0.5);
 `;
 
@@ -109,14 +82,14 @@ function Gallery() {
             ? {
                 id: videoInfo.snippet.resourceId.videoId,
                 title: videoInfo.snippet.title,
-                thumbnail_url: videoInfo.snippet.thumbnails.medium.url,
+                thumbnail_url: videoInfo.snippet.thumbnails.default.url,
                 isFocused: true,
                 tag,
               }
             : {
                 id: videoInfo.snippet.resourceId.videoId,
                 title: videoInfo.snippet.title,
-                thumbnail_url: videoInfo.snippet.thumbnails.medium.url,
+                thumbnail_url: videoInfo.snippet.thumbnails.default.url,
                 isFocused: false,
                 tag,
               };
@@ -230,36 +203,14 @@ function Gallery() {
       />
       {displayGallery ? (
         <WhiteBoxWrapp>
-          <GallerySlide>
-            <ArrowCircleLeftTwoToneIcon
-              style={{ fontSize: "3rem", cursor: "pointer" }}
-              onClick={onPrevSlide}
-            />
-            <VideosWrapp>
-              <AllVideosWrapp currentImgIndex={currentImgIndex}>
-                {videosInfoArray.map((videosInfo) => (
-                  <Item
-                    id={videosInfo.id}
-                    key={videosInfo.id}
-                    isFocused={videosInfo.isFocused}
-                  />
-                ))}
-              </AllVideosWrapp>
-            </VideosWrapp>
-            <ArrowCircleRightTwoToneIcon
-              style={{ fontSize: "3rem", cursor: "pointer" }}
-              onClick={onNextSlide}
-            />
-          </GallerySlide>
+          <GallerySlide
+            onPrevSlide={onPrevSlide}
+            onNextSlide={onNextSlide}
+            videosInfoArray={videosInfoArray}
+            currentImgIndex={currentImgIndex}
+          ></GallerySlide>
 
-          <ThumbnailWrapp>
-            {videosInfoArray.map((videosInfo) => (
-              <Thumbnail
-                thumbnail_url={videosInfo.thumbnail_url}
-                key={videosInfo.id}
-              />
-            ))}
-          </ThumbnailWrapp>
+          <ThumbnailSlide videosInfoArray={videosInfoArray}></ThumbnailSlide>
         </WhiteBoxWrapp>
       ) : (
         <Description onClick={() => setDisplayGallery(true)}>
