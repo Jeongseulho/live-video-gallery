@@ -5,11 +5,7 @@
   font-family: "Open Sans";
 }
 
-html {
-  width: 100%;
-  height: 125vw;
-}
-
+html,
 #root,
 body,
 main {

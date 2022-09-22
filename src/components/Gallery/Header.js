@@ -37,6 +37,7 @@ function Header({
   setBackgroundVideo,
   setCurrentImgIndex,
   onChangeFocus,
+  setDisplayGallery,
 }) {
   const [tab, setTab] = React.useState(0);
 
@@ -44,12 +45,10 @@ function Header({
     setTab(newTab);
   };
 
-  const onSearch = (value) => {
-    if (value === "") {
-      return;
-    } else {
+  const onSearch = (e) => {
+    if (!(e.target.value === "")) {
       const searchedVideosInfoArray = allVideosInfoArray.filter((videosInfo) =>
-        videosInfo.title.toLowerCase().includes(value.toLowerCase())
+        videosInfo.title.toLowerCase().includes(e.target.value.toLowerCase())
       );
       onChangeFocus("current", searchedVideosInfoArray);
     }
@@ -92,6 +91,20 @@ function Header({
     }
   };
 
+  const onTab = (tag) => {
+    return (
+      <Tab
+        key={tag}
+        label={tag}
+        onClick={() => {
+          onFilterByTag(tag);
+          changeBackgroundVideo(tag);
+          setDisplayGallery(false);
+        }}
+      />
+    );
+  };
+
   return (
     <HeaderWrapp
       divider={<Divider orientation="vertical" flexItem />}
@@ -101,33 +114,18 @@ function Header({
 
       <SearchWrapp>
         <TextField
-          id="filled-search"
-          label="Search field"
+          label="Search by Title"
           type="search"
           variant="filled"
+          onChange={onSearch}
         />
         <Tabs value={tab} onChange={handleChange} centered>
-          <Tab
-            label="Item One"
-            onClick={() => {
-              onFilterByTag("ALL");
-              changeBackgroundVideo("ALL");
-            }}
-          />
-          <Tab
-            label="Item Two"
-            onClick={() => {
-              onFilterByTag("land scape");
-              changeBackgroundVideo("land scape");
-            }}
-          />
-          <Tab
-            label="Item Three"
-            onClick={() => {
-              onFilterByTag("animal");
-              changeBackgroundVideo("animal");
-            }}
-          />
+          {[
+            "ALL",
+            ...new Set(
+              allVideosInfoArray.map((videosInfoArray) => videosInfoArray.tag)
+            ),
+          ].map((tag) => onTab(tag))}
         </Tabs>
       </SearchWrapp>
     </HeaderWrapp>

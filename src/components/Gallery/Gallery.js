@@ -58,10 +58,17 @@ const ThumbnailWrapp = styled.div`
 const WhiteBoxWrapp = styled.div`
   position: absolute;
   left: 10%;
-  top: 100%;
+  top: 25%;
   width: 80%;
-  height: 55%;
+  height: 70%;
   background-color: rgba(255, 255, 255, 0.5);
+`;
+
+const Description = styled.div`
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  cursor: pointer;
 `;
 
 function Gallery() {
@@ -69,6 +76,7 @@ function Gallery() {
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
   const [videosInfoArray, setVideosInfoArray] = useState([]);
   const [allVideosInfoArray, setallVideosInfoArray] = useState([]);
+  const [displayGallery, setDisplayGallery] = useState(false);
 
   useEffect(() => {
     const getAllPlayList = async (key) => {
@@ -218,39 +226,46 @@ function Gallery() {
         setBackgroundVideo={setBackgroundVideo}
         setCurrentImgIndex={setCurrentImgIndex}
         onChangeFocus={onChangeFocus}
+        setDisplayGallery={setDisplayGallery}
       />
-      <WhiteBoxWrapp>
-        <GallerySlide>
-          <ArrowCircleLeftTwoToneIcon
-            style={{ fontSize: "3rem" }}
-            onClick={onPrevSlide}
-          />
-          <VideosWrapp>
-            <AllVideosWrapp currentImgIndex={currentImgIndex}>
-              {videosInfoArray.map((videosInfo) => (
-                <Item
-                  id={videosInfo.id}
-                  key={videosInfo.id}
-                  isFocused={videosInfo.isFocused}
-                />
-              ))}
-            </AllVideosWrapp>
-          </VideosWrapp>
-          <ArrowCircleRightTwoToneIcon
-            style={{ fontSize: "3rem" }}
-            onClick={onNextSlide}
-          />
-        </GallerySlide>
-
-        <ThumbnailWrapp>
-          {videosInfoArray.map((videosInfo) => (
-            <Thumbnail
-              thumbnail_url={videosInfo.thumbnail_url}
-              key={videosInfo.id}
+      {displayGallery ? (
+        <WhiteBoxWrapp>
+          <GallerySlide>
+            <ArrowCircleLeftTwoToneIcon
+              style={{ fontSize: "3rem", cursor: "pointer" }}
+              onClick={onPrevSlide}
             />
-          ))}
-        </ThumbnailWrapp>
-      </WhiteBoxWrapp>
+            <VideosWrapp>
+              <AllVideosWrapp currentImgIndex={currentImgIndex}>
+                {videosInfoArray.map((videosInfo) => (
+                  <Item
+                    id={videosInfo.id}
+                    key={videosInfo.id}
+                    isFocused={videosInfo.isFocused}
+                  />
+                ))}
+              </AllVideosWrapp>
+            </VideosWrapp>
+            <ArrowCircleRightTwoToneIcon
+              style={{ fontSize: "3rem", cursor: "pointer" }}
+              onClick={onNextSlide}
+            />
+          </GallerySlide>
+
+          <ThumbnailWrapp>
+            {videosInfoArray.map((videosInfo) => (
+              <Thumbnail
+                thumbnail_url={videosInfo.thumbnail_url}
+                key={videosInfo.id}
+              />
+            ))}
+          </ThumbnailWrapp>
+        </WhiteBoxWrapp>
+      ) : (
+        <Description onClick={() => setDisplayGallery(true)}>
+          description
+        </Description>
+      )}
     </main>
   );
 }

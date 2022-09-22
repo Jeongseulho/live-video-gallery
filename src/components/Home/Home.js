@@ -21,7 +21,7 @@ function Home() {
       <Title>
         <h1>Title</h1>
         <h5>description</h5>
-        <Link to="/ALL"> 갤러리로 </Link>,
+        <Link to="/gallery"> 갤러리로 </Link>,
       </Title>
     </HomeWrapp>
   );
