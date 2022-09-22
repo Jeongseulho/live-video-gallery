@@ -37,6 +37,7 @@ function Header({
   setCurrentImgIndex,
   onChangeFocus,
   setDisplayGallery,
+  setCurrentTab,
 }) {
   const [tab, setTab] = React.useState(0);
 
@@ -90,7 +91,7 @@ function Header({
     }
   };
 
-  const onTab = (tag) => {
+  const onTab = (tag, index) => {
     return (
       <Tab
         key={tag}
@@ -99,6 +100,7 @@ function Header({
           onFilterByTag(tag);
           changeBackgroundVideo(tag);
           setDisplayGallery(false);
+          setCurrentTab(index);
         }}
       />
     );
@@ -124,7 +126,7 @@ function Header({
             ...new Set(
               allVideosInfoArray.map((videosInfoArray) => videosInfoArray.tag)
             ),
-          ].map((tag) => onTab(tag))}
+          ].map((tag, index) => onTab(tag, index))}
         </Tabs>
       </SearchWrapp>
     </HeaderWrapp>

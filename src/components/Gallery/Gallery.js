@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Header from "./Header";
-import GallerySlide from "./GallerySlide";
 import ThumbnailSlide from "./ThumbnailSlide";
+import PlayerSlide from "./PlayerSlide";
+import Description from "./Description";
 
 const BackGroundVideoWrapp = styled.div`
   position: fixed;
@@ -36,19 +37,13 @@ const WhiteBoxWrapp = styled.div`
   background-color: rgba(255, 255, 255, 0.5);
 `;
 
-const Description = styled.div`
-  position: absolute;
-  left: 50%;
-  top: 45%;
-  cursor: pointer;
-`;
-
 function Gallery() {
   const [backgroundVideo, setBackgroundVideo] = useState("/assets/ALL.mp4");
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
   const [videosInfoArray, setVideosInfoArray] = useState([]);
   const [allVideosInfoArray, setallVideosInfoArray] = useState([]);
   const [displayGallery, setDisplayGallery] = useState(false);
+  const [currentTab, setCurrentTab] = useState(0);
 
   useEffect(() => {
     const getAllPlayList = async (key) => {
@@ -199,22 +194,27 @@ function Gallery() {
         setCurrentImgIndex={setCurrentImgIndex}
         onChangeFocus={onChangeFocus}
         setDisplayGallery={setDisplayGallery}
+        setCurrentTab={setCurrentTab}
       />
       {displayGallery ? (
         <WhiteBoxWrapp>
-          <GallerySlide
+          <PlayerSlide
             onPrevSlide={onPrevSlide}
             onNextSlide={onNextSlide}
             videosInfoArray={videosInfoArray}
             currentImgIndex={currentImgIndex}
-          ></GallerySlide>
+          ></PlayerSlide>
 
-          <ThumbnailSlide videosInfoArray={videosInfoArray}></ThumbnailSlide>
+          <ThumbnailSlide
+            videosInfoArray={videosInfoArray}
+            currentImgIndex={currentImgIndex}
+          ></ThumbnailSlide>
         </WhiteBoxWrapp>
       ) : (
-        <Description onClick={() => setDisplayGallery(true)}>
-          description
-        </Description>
+        <Description
+          currentTab={currentTab}
+          setDisplayGallery={setDisplayGallery}
+        />
       )}
     </main>
   );

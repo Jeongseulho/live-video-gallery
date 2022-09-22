@@ -1,23 +1,27 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import Thumbnail from "./Thumbnail";
 
 const ThumbnailSlideWrapp = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin-left: 35px;
-  & > img:nth-child(1) {
-    border: 2px solid green;
-  }
+  ${(props) =>
+    css`
+      & > img:nth-child(${props.currentImgIndex + 1}) {
+        border: 3px dashed red;
+      }
+    `}
 `;
 
-function ThumbnailSlide({ videosInfoArray }) {
+function ThumbnailSlide({ videosInfoArray, currentImgIndex }) {
   return (
-    <ThumbnailSlideWrapp>
-      {videosInfoArray.map((videosInfo) => (
+    <ThumbnailSlideWrapp currentImgIndex={currentImgIndex}>
+      {videosInfoArray.map((videosInfo, index) => (
         <Thumbnail
           thumbnail_url={videosInfo.thumbnail_url}
           key={videosInfo.id}
+          index={index}
         />
       ))}
     </ThumbnailSlideWrapp>

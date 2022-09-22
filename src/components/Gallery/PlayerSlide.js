@@ -4,7 +4,7 @@ import ArrowCircleLeftTwoToneIcon from "@mui/icons-material/ArrowCircleLeftTwoTo
 import styled from "styled-components";
 import Player from "./Player";
 
-const GallerySlideWrapp = styled.div`
+const PlayerSlideWrapp = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -27,14 +27,14 @@ const AllVideosWrapp = styled.div`
   transition: all 2s ease-in-out;
 `;
 
-function GallerySlide({
+function PlayerSlide({
   onPrevSlide,
   onNextSlide,
   videosInfoArray,
   currentImgIndex,
 }) {
   return (
-    <GallerySlideWrapp>
+    <PlayerSlideWrapp>
       <ArrowCircleLeftTwoToneIcon
         style={{ fontSize: "3rem", cursor: "pointer" }}
         onClick={onPrevSlide}
@@ -54,8 +54,8 @@ function GallerySlide({
         style={{ fontSize: "3rem", cursor: "pointer" }}
         onClick={onNextSlide}
       />
-    </GallerySlideWrapp>
+    </PlayerSlideWrapp>
   );
 }
 
-export default GallerySlide;
+export default PlayerSlide;
