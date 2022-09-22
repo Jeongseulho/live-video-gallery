@@ -2,7 +2,7 @@ import React from "react";
 import ArrowCircleRightTwoToneIcon from "@mui/icons-material/ArrowCircleRightTwoTone";
 import ArrowCircleLeftTwoToneIcon from "@mui/icons-material/ArrowCircleLeftTwoTone";
 import styled from "styled-components";
-import Item from "./Item";
+import Player from "./Player";
 
 const GallerySlideWrapp = styled.div`
   display: flex;
@@ -42,7 +42,7 @@ function GallerySlide({
       <VideoWrapp>
         <AllVideosWrapp currentImgIndex={currentImgIndex}>
           {videosInfoArray.map((videosInfo) => (
-            <Item
+            <Player
               id={videosInfo.id}
               key={videosInfo.id}
               isFocused={videosInfo.isFocused}

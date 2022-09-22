@@ -3,7 +3,7 @@ import styled from "styled-components";
 import ReactPlayer from "react-player";
 import CircularProgress from "@mui/material/CircularProgress";
 
-const ItemWrapp = styled.div`
+const PlayerWrapp = styled.div`
   position: relative;
   width: 640px;
   height: 360px;
@@ -17,27 +17,27 @@ const LoadingIcon = styled(CircularProgress)`
   display: ${(props) => (props.$isVideoReady ? "none" : "")};
 `;
 
-function Item({ id, isFocused }) {
+function Player({ id, isFocused }) {
   const [isVideoReady, setIsVideoReady] = useState(false);
 
   return (
     <>
       {isFocused ? (
-        <ItemWrapp>
+        <PlayerWrapp>
           <LoadingIcon $isVideoReady={isVideoReady} />
           <ReactPlayer
             url={`https://www.youtube.com/watch?v=${id}`}
             controls={true}
             onReady={() => setIsVideoReady(true)}
           />
-        </ItemWrapp>
+        </PlayerWrapp>
       ) : (
-        <ItemWrapp>
+        <PlayerWrapp>
           <LoadingIcon $isVideoReady={isVideoReady} />
-        </ItemWrapp>
+        </PlayerWrapp>
       )}
     </>
   );
 }
 
-export default Item;
+export default Player;
