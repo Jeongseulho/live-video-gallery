@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 
 function Thumbnail({ thumbnail_url, index }) {
   return (

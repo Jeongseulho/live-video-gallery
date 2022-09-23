@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import Stack from "@mui/material/Stack";
-import Divider from "@mui/material/Divider";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import TextField from "@mui/material/TextField";
+import Divider from "@mui/material/Divider";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 const HeaderWrapp = styled(Stack)`
   padding-top: 10px;
@@ -12,22 +13,27 @@ const HeaderWrapp = styled(Stack)`
   background-color: #fff;
   width: 100%;
   z-index: 100;
-
-  & > h5 {
-    flex: 1;
-    text-align: right;
-  }
 `;
 
 const SearchWrapp = styled.div`
+  margin-top: 10px;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   flex: 2;
+  & > div {
+    margin-left: 10px;
+  }
 `;
 const Title = styled.h1`
   text-shadow: -0.5px 0 white, 0 0.5px white, 0.5px 0 white, 0 -0.5px white;
   flex: 1;
   text-align: center;
+  margin-bottom: 10px;
+`;
+
+const FavoriteWrapp = styled.div`
+  display: flex;
+  margin-right: 10px;
 `;
 
 function Header({
@@ -107,27 +113,31 @@ function Header({
   };
 
   return (
-    <HeaderWrapp
-      divider={<Divider orientation="vertical" flexItem />}
-      spacing={2}
-    >
+    <HeaderWrapp>
       <Title>Live Video Gallery</Title>
-
+      <Divider variant="middle" />
       <SearchWrapp>
-        <TextField
-          label="Search by Title"
-          type="search"
-          variant="filled"
-          onChange={onSearch}
-        />
-        <Tabs value={tab} onChange={handleChange} centered>
-          {[
-            "ALL",
-            ...new Set(
-              allVideosInfoArray.map((videosInfoArray) => videosInfoArray.tag)
-            ),
-          ].map((tag, index) => onTab(tag, index))}
-        </Tabs>
+        <div>
+          <TextField
+            label="Search by Title"
+            type="search"
+            variant="filled"
+            onChange={onSearch}
+            sx={{ width: "100%" }}
+          />
+          <Tabs value={tab} onChange={handleChange} centered>
+            {[
+              "ALL",
+              ...new Set(
+                allVideosInfoArray.map((videosInfoArray) => videosInfoArray.tag)
+              ),
+            ].map((tag, index) => onTab(tag, index))}
+          </Tabs>
+        </div>
+
+        <FavoriteWrapp>
+          My Favorite <FavoriteIcon sx={{ color: "red" }} />
+        </FavoriteWrapp>
       </SearchWrapp>
     </HeaderWrapp>
   );
