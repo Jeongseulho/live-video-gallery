@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import ReactPlayer from "react-player";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -13,26 +13,23 @@ const PlayerWrapp = styled.div`
   }
 `;
 
-function Player({ id, isFocused, isFavortie, onToggleFavorite }) {
-  const [heart, SetHeart] = useState(isFavortie);
+function Player({ id, isFocused, isFavorite, onToggleFavorite }) {
   return (
     <>
       {isFocused ? (
         <PlayerWrapp>
-          {heart ? (
+          {isFavorite ? (
             <FavoriteIcon
               sx={{ color: "red" }}
               onClick={() => {
-                onToggleFavorite(isFavortie);
-                SetHeart((prev) => !prev);
+                onToggleFavorite(isFavorite);
               }}
             />
           ) : (
             <FavoriteBorderIcon
               sx={{ color: "red" }}
               onClick={() => {
-                onToggleFavorite(isFavortie);
-                SetHeart((prev) => !prev);
+                onToggleFavorite(isFavorite);
               }}
             />
           )}

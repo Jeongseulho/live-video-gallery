@@ -19,10 +19,6 @@ const SearchWrapp = styled.div`
   margin-top: 10px;
   display: flex;
   justify-content: space-between;
-  flex: 2;
-  & > div {
-    margin-left: 10px;
-  }
 `;
 const Title = styled.h1`
   text-shadow: -0.5px 0 white, 0 0.5px white, 0.5px 0 white, 0 -0.5px white;
@@ -112,31 +108,37 @@ function Header({
     );
   };
 
+  const onMyFavorite = () => {
+    const filteredVideosInfoArray = allVideosInfoArray.filter(
+      (videosInfo) => videosInfo.isFavorite
+    );
+    onChangeFocus("current", filteredVideosInfoArray);
+  };
+
   return (
     <HeaderWrapp>
       <Title>Live Video Gallery</Title>
       <Divider variant="middle" />
       <SearchWrapp>
-        <div>
-          <TextField
-            label="Search by Title"
-            type="search"
-            variant="filled"
-            onChange={onSearch}
-            sx={{ width: "100%" }}
-          />
-          <Tabs value={tab} onChange={handleChange} centered>
-            {[
-              "ALL",
-              ...new Set(
-                allVideosInfoArray.map((videosInfoArray) => videosInfoArray.tag)
-              ),
-            ].map((tag, index) => onTab(tag, index))}
-          </Tabs>
-        </div>
+        <TextField
+          label="Search by Title"
+          type="search"
+          variant="filled"
+          onChange={onSearch}
+          sx={{ width: "30%" }}
+        />
+        <Tabs value={tab} onChange={handleChange} centered>
+          {[
+            "ALL",
+            ...new Set(
+              allVideosInfoArray.map((videosInfoArray) => videosInfoArray.tag)
+            ),
+          ].map((tag, index) => onTab(tag, index))}
+        </Tabs>
 
-        <FavoriteWrapp>
-          My Favorite <FavoriteIcon sx={{ color: "red" }} />
+        <FavoriteWrapp onClick={onMyFavorite}>
+          My Favorite
+          <FavoriteIcon sx={{ color: "red" }} />
         </FavoriteWrapp>
       </SearchWrapp>
     </HeaderWrapp>

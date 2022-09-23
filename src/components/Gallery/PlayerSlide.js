@@ -33,25 +33,24 @@ function PlayerSlide({
   videosInfoArray,
   currentImgIndex,
   setVideosInfoArray,
+  setAllVideosInfoArray,
 }) {
   const onToggleFavorite = (isFavorite) => {
-    if (isFavorite)
-      setVideosInfoArray((videosInfoArray) =>
-        videosInfoArray.map((videosInfo, index) =>
-          currentImgIndex === index
-            ? { ...videosInfo, isFavorite: false }
-            : { ...videosInfo }
-        )
-      );
-    else
-      setVideosInfoArray((videosInfoArray) =>
-        videosInfoArray.map((videosInfo, index) =>
-          currentImgIndex === index
-            ? { ...videosInfo, isFavorite: true }
-            : { ...videosInfo }
-        )
-      );
-    console.log(videosInfoArray);
+    setVideosInfoArray((videosInfoArray) =>
+      videosInfoArray.map((videosInfo, index) =>
+        currentImgIndex === index
+          ? { ...videosInfo, isFavorite: !isFavorite }
+          : { ...videosInfo }
+      )
+    );
+
+    setAllVideosInfoArray((allVideosInfoArray) =>
+      allVideosInfoArray.map((videosInfo, index) =>
+        currentImgIndex === index
+          ? { ...videosInfo, isFavorite: !isFavorite }
+          : { ...videosInfo }
+      )
+    );
   };
 
   return (

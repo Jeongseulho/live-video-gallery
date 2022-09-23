@@ -41,7 +41,7 @@ function Gallery() {
   const [backgroundVideo, setBackgroundVideo] = useState("/assets/ALL.mp4");
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
   const [videosInfoArray, setVideosInfoArray] = useState([]);
-  const [allVideosInfoArray, setallVideosInfoArray] = useState([]);
+  const [allVideosInfoArray, setAllVideosInfoArray] = useState([]);
   const [displayGallery, setDisplayGallery] = useState(false);
   const [currentTab, setCurrentTab] = useState(0);
 
@@ -113,7 +113,7 @@ function Gallery() {
       });
 
       setVideosInfoArray(my1DAllPlayListInfo);
-      setallVideosInfoArray(my1DAllPlayListInfo);
+      setAllVideosInfoArray(my1DAllPlayListInfo);
     }
 
     getAllVideosInfo(process.env.REACT_APP_API_KEY);
@@ -206,6 +206,8 @@ function Gallery() {
             videosInfoArray={videosInfoArray}
             currentImgIndex={currentImgIndex}
             setVideosInfoArray={setVideosInfoArray}
+            setAllVideosInfoArray={setAllVideosInfoArray}
+            allVideosInfoArray={allVideosInfoArray}
           ></PlayerSlide>
 
           <ThumbnailSlide
