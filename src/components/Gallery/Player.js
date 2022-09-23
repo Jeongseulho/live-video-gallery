@@ -1,40 +1,48 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import ReactPlayer from "react-player";
-import CircularProgress from "@mui/material/CircularProgress";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
 const PlayerWrapp = styled.div`
   position: relative;
   width: 640px;
   height: 360px;
+  & > svg {
+    cursor: pointer;
+  }
 `;
 
-const LoadingIcon = styled(CircularProgress)`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: -1;
-  display: ${(props) => (props.$isVideoReady ? "none" : "")};
-`;
-
-function Player({ id, isFocused }) {
-  const [isVideoReady, setIsVideoReady] = useState(false);
-
+function Player({ id, isFocused, isFavortie, onToggleFavorite }) {
+  const [heart, SetHeart] = useState(isFavortie);
   return (
     <>
       {isFocused ? (
         <PlayerWrapp>
-          <LoadingIcon $isVideoReady={isVideoReady} />
+          {heart ? (
+            <FavoriteIcon
+              sx={{ color: "red" }}
+              onClick={() => {
+                onToggleFavorite(isFavortie);
+                SetHeart((prev) => !prev);
+              }}
+            />
+          ) : (
+            <FavoriteBorderIcon
+              sx={{ color: "red" }}
+              onClick={() => {
+                onToggleFavorite(isFavortie);
+                SetHeart((prev) => !prev);
+              }}
+            />
+          )}
           <ReactPlayer
             url={`https://www.youtube.com/watch?v=${id}`}
             controls={true}
-            onReady={() => setIsVideoReady(true)}
           />
         </PlayerWrapp>
       ) : (
-        <PlayerWrapp>
-          <LoadingIcon $isVideoReady={isVideoReady} />
-        </PlayerWrapp>
+        <PlayerWrapp></PlayerWrapp>
       )}
     </>
   );

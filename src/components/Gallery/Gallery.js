@@ -78,6 +78,7 @@ function Gallery() {
                 title: videoInfo.snippet.title,
                 thumbnail_url: videoInfo.snippet.thumbnails.default.url,
                 isFocused: true,
+                isFavorite: false,
                 tag,
               }
             : {
@@ -85,6 +86,7 @@ function Gallery() {
                 title: videoInfo.snippet.title,
                 thumbnail_url: videoInfo.snippet.thumbnails.default.url,
                 isFocused: false,
+                isFavorite: false,
                 tag,
               };
         });
@@ -203,6 +205,7 @@ function Gallery() {
             onNextSlide={onNextSlide}
             videosInfoArray={videosInfoArray}
             currentImgIndex={currentImgIndex}
+            setVideosInfoArray={setVideosInfoArray}
           ></PlayerSlide>
 
           <ThumbnailSlide

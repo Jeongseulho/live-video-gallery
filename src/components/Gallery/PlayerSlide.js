@@ -14,7 +14,7 @@ const PlayerSlideWrapp = styled.div`
 
 const VideoWrapp = styled.div`
   width: 640px;
-  height: 360px;
+  height: 384px;
   overflow: hidden;
   position: relative;
 `;
@@ -32,7 +32,28 @@ function PlayerSlide({
   onNextSlide,
   videosInfoArray,
   currentImgIndex,
+  setVideosInfoArray,
 }) {
+  const onToggleFavorite = (isFavorite) => {
+    if (isFavorite)
+      setVideosInfoArray((videosInfoArray) =>
+        videosInfoArray.map((videosInfo, index) =>
+          currentImgIndex === index
+            ? { ...videosInfo, isFavorite: false }
+            : { ...videosInfo }
+        )
+      );
+    else
+      setVideosInfoArray((videosInfoArray) =>
+        videosInfoArray.map((videosInfo, index) =>
+          currentImgIndex === index
+            ? { ...videosInfo, isFavorite: true }
+            : { ...videosInfo }
+        )
+      );
+    console.log(videosInfoArray);
+  };
+
   return (
     <PlayerSlideWrapp>
       <ArrowCircleLeftTwoToneIcon
@@ -46,6 +67,8 @@ function PlayerSlide({
               id={videosInfo.id}
               key={videosInfo.id}
               isFocused={videosInfo.isFocused}
+              isFavorite={videosInfo.isFavorite}
+              onToggleFavorite={onToggleFavorite}
             />
           ))}
         </AllVideosWrapp>

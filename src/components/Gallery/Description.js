@@ -9,22 +9,78 @@ const DescriptionWrapp = styled.div`
   text-align: center;
 `;
 
+const Button = styled.button`
+  background: rgba(0, 0, 0, 0);
+  color: black;
+  z-index: 1;
+  position: relative;
+
+  &:after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 100%;
+    top: 0;
+    left: 0;
+    direction: rtl;
+    z-index: -1;
+    background: rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease;
+  }
+
+  &:hover:after {
+    left: auto;
+    right: 0;
+    width: 100%;
+  }
+  & > p,
+  & > svg {
+    font-size: 2rem;
+  }
+`;
+
 function Description({ currentTab, setDisplayGallery }) {
   const tabContArr = [
     <div>
-      <h1>all 제목</h1> <h5>all 내용</h5>
+      <h1>all 제목</h1> <p>all 내용</p>
+      <Button variant="outlined" onClick={() => setDisplayGallery(true)}>
+        <p>Explore ALL Contents</p>
+      </Button>
+    </div>,
+
+    <div>
+      <h1>all 제목</h1> <p>all 내용</p>
+      <Button variant="outlined" onClick={() => setDisplayGallery(true)}>
+        <p>Explore ALL Contents</p>
+      </Button>
     </div>,
     <div>
-      <h1>space 제목</h1> <h5>space 내용</h5>
+      <h1>all 제목</h1> <p>all 내용</p>
+      <Button variant="outlined" onClick={() => setDisplayGallery(true)}>
+        <p>Explore ALL Contents</p>
+      </Button>
+    </div>,
+    <div>
+      <h1>all 제목</h1> <p>all 내용</p>
+      <Button variant="outlined" onClick={() => setDisplayGallery(true)}>
+        <p>Explore ALL Contents</p>
+      </Button>
+    </div>,
+    <div>
+      <h1>all 제목</h1> <p>all 내용</p>
+      <Button variant="outlined" onClick={() => setDisplayGallery(true)}>
+        <p>Explore ALL Contents</p>
+      </Button>
+    </div>,
+    <div>
+      <h1>all 제목</h1> <p>all 내용</p>
+      <Button variant="outlined" onClick={() => setDisplayGallery(true)}>
+        <p>Explore ALL Contents</p>
+      </Button>
     </div>,
   ];
 
-  return (
-    <DescriptionWrapp>
-      {tabContArr[currentTab]}
-      <button onClick={() => setDisplayGallery(true)}>갤러리 보기</button>
-    </DescriptionWrapp>
-  );
+  return <DescriptionWrapp>{tabContArr[currentTab]}</DescriptionWrapp>;
 }
 
 export default Description;
