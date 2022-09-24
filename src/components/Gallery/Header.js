@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Stack from "@mui/material/Stack";
 import Tabs from "@mui/material/Tabs";
@@ -18,7 +18,6 @@ const HeaderWrapp = styled(Stack)`
 const SearchWrapp = styled.div`
   margin-top: 10px;
   display: flex;
-  justify-content: space-between;
 `;
 const Title = styled.h1`
   text-shadow: -0.5px 0 white, 0 0.5px white, 0.5px 0 white, 0 -0.5px white;
@@ -35,14 +34,14 @@ const FavoriteWrapp = styled.div`
 
 function Header({
   setVideosInfoArray,
-  allVideosInfoArray,
   setBackgroundVideo,
   setCurrentImgIndex,
   onChangeFocus,
   setDisplayGallery,
   setCurrentTab,
+  allVideosInfoArray,
 }) {
-  const [tab, setTab] = React.useState(0);
+  const [tab, setTab] = useState(0);
 
   const handleChange = (e, newTab) => {
     setTab(newTab);
@@ -50,8 +49,9 @@ function Header({
 
   const onSearch = (e) => {
     if (!(e.target.value === "")) {
-      const searchedVideosInfoArray = allVideosInfoArray.filter((videosInfo) =>
-        videosInfo.title.toLowerCase().includes(e.target.value.toLowerCase())
+      const searchedVideosInfoArray = allVideosInfoArray.current.filter(
+        (videosInfo) =>
+          videosInfo.title.toLowerCase().includes(e.target.value.toLowerCase())
       );
       onChangeFocus("current", searchedVideosInfoArray);
     }
@@ -60,9 +60,9 @@ function Header({
   const onFilterByTag = (tag) => {
     setCurrentImgIndex(0);
     if (tag === "ALL") {
-      setVideosInfoArray(allVideosInfoArray);
+      setVideosInfoArray(allVideosInfoArray.current);
     } else {
-      const filteredVideosInfoArray = allVideosInfoArray.filter(
+      const filteredVideosInfoArray = allVideosInfoArray.current.filter(
         (videosInfo) => videosInfo.tag === tag
       );
       onChangeFocus("current", filteredVideosInfoArray);

@@ -22,14 +22,14 @@ function Player({ id, isFocused, isFavorite, onToggleFavorite }) {
             <FavoriteIcon
               sx={{ color: "red" }}
               onClick={() => {
-                onToggleFavorite(isFavorite);
+                onToggleFavorite(isFavorite, id);
               }}
             />
           ) : (
             <FavoriteBorderIcon
               sx={{ color: "red" }}
               onClick={() => {
-                onToggleFavorite(isFavorite);
+                onToggleFavorite(isFavorite, id);
               }}
             />
           )}

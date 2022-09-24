@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import Header from "./Header";
 import ThumbnailSlide from "./ThumbnailSlide";
@@ -41,7 +41,7 @@ function Gallery() {
   const [backgroundVideo, setBackgroundVideo] = useState("/assets/ALL.mp4");
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
   const [videosInfoArray, setVideosInfoArray] = useState([]);
-  const [allVideosInfoArray, setAllVideosInfoArray] = useState([]);
+  const allVideosInfoArray = useRef([]);
   const [displayGallery, setDisplayGallery] = useState(false);
   const [currentTab, setCurrentTab] = useState(0);
 
@@ -112,18 +112,21 @@ function Gallery() {
         my1DAllPlayListInfo = [...my1DAllPlayListInfo, ...myPlayListInfo];
       });
 
-      const favoriteVideosInfoArray = JSON.parse(
-        localStorage.getItem("favoriteVideosInfoArray")
-      );
-
-      my1DAllPlayListInfo.forEach((b) => {
-        favoriteVideosInfoArray.forEach((a) => {
-          if (a.id === b.id) {
-            b.isFavorite = true;
-          }
+      if (localStorage.getItem("favoriteVideosInfoArray")) {
+        my1DAllPlayListInfo.forEach((myPlayListInfo) => {
+          JSON.parse(localStorage.getItem("favoriteVideosInfoArray")).forEach(
+            (favoriteVideosInfo) => {
+              if (favoriteVideosInfo.id === myPlayListInfo.id) {
+                myPlayListInfo.isFavorite = true;
+              }
+            }
+          );
         });
-      });
-      setAllVideosInfoArray(my1DAllPlayListInfo);
+      } else {
+        localStorage.setItem("favoriteVideosInfoArray", "");
+      }
+
+      allVideosInfoArray.current = my1DAllPlayListInfo;
       setVideosInfoArray(my1DAllPlayListInfo);
     }
 
@@ -202,12 +205,12 @@ function Gallery() {
 
       <Header
         setVideosInfoArray={setVideosInfoArray}
-        allVideosInfoArray={allVideosInfoArray}
         setBackgroundVideo={setBackgroundVideo}
         setCurrentImgIndex={setCurrentImgIndex}
         onChangeFocus={onChangeFocus}
         setDisplayGallery={setDisplayGallery}
         setCurrentTab={setCurrentTab}
+        allVideosInfoArray={allVideosInfoArray}
       />
       {displayGallery ? (
         <WhiteBoxWrapp>
@@ -217,8 +220,8 @@ function Gallery() {
             videosInfoArray={videosInfoArray}
             currentImgIndex={currentImgIndex}
             setVideosInfoArray={setVideosInfoArray}
-            setAllVideosInfoArray={setAllVideosInfoArray}
             allVideosInfoArray={allVideosInfoArray}
+            setCurrentImgIndex={setCurrentImgIndex}
           ></PlayerSlide>
 
           <ThumbnailSlide
