@@ -112,8 +112,19 @@ function Gallery() {
         my1DAllPlayListInfo = [...my1DAllPlayListInfo, ...myPlayListInfo];
       });
 
-      setVideosInfoArray(my1DAllPlayListInfo);
+      const favoriteVideosInfoArray = JSON.parse(
+        localStorage.getItem("favoriteVideosInfoArray")
+      );
+
+      my1DAllPlayListInfo.forEach((b) => {
+        favoriteVideosInfoArray.forEach((a) => {
+          if (a.id === b.id) {
+            b.isFavorite = true;
+          }
+        });
+      });
       setAllVideosInfoArray(my1DAllPlayListInfo);
+      setVideosInfoArray(my1DAllPlayListInfo);
     }
 
     getAllVideosInfo(process.env.REACT_APP_API_KEY);

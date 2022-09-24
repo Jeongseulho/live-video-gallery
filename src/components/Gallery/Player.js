@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import ReactPlayer from "react-player";
 import FavoriteIcon from "@mui/icons-material/Favorite";

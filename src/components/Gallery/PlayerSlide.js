@@ -34,6 +34,7 @@ function PlayerSlide({
   currentImgIndex,
   setVideosInfoArray,
   setAllVideosInfoArray,
+  allVideosInfoArray,
 }) {
   const onToggleFavorite = (isFavorite) => {
     setVideosInfoArray((videosInfoArray) =>
@@ -50,6 +51,15 @@ function PlayerSlide({
           ? { ...videosInfo, isFavorite: !isFavorite }
           : { ...videosInfo }
       )
+    );
+
+    const filteredVideosInfoArray = allVideosInfoArray.filter(
+      (videosInfo) => videosInfo.isFavorite
+    );
+
+    localStorage.setItem(
+      "favoriteVideosInfoArray",
+      JSON.stringify(filteredVideosInfoArray)
     );
   };
 

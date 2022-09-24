@@ -30,6 +30,7 @@ const Title = styled.h1`
 const FavoriteWrapp = styled.div`
   display: flex;
   margin-right: 10px;
+  cursor: pointer;
 `;
 
 function Header({
@@ -109,10 +110,12 @@ function Header({
   };
 
   const onMyFavorite = () => {
-    const filteredVideosInfoArray = allVideosInfoArray.filter(
-      (videosInfo) => videosInfo.isFavorite
+    onChangeFocus(
+      "current",
+      JSON.parse(localStorage.getItem("favoriteVideosInfoArray"))
     );
-    onChangeFocus("current", filteredVideosInfoArray);
+
+    setDisplayGallery(true);
   };
 
   return (
@@ -130,16 +133,22 @@ function Header({
         <Tabs value={tab} onChange={handleChange} centered>
           {[
             "ALL",
-            ...new Set(
-              allVideosInfoArray.map((videosInfoArray) => videosInfoArray.tag)
-            ),
+            "space",
+            "land scape",
+            "animal",
+            "under water",
+            "street",
           ].map((tag, index) => onTab(tag, index))}
+          <Tab
+            label={
+              <FavoriteWrapp>
+                My Favorite
+                <FavoriteIcon sx={{ color: "red" }} />
+              </FavoriteWrapp>
+            }
+            onClick={onMyFavorite}
+          />
         </Tabs>
-
-        <FavoriteWrapp onClick={onMyFavorite}>
-          My Favorite
-          <FavoriteIcon sx={{ color: "red" }} />
-        </FavoriteWrapp>
       </SearchWrapp>
     </HeaderWrapp>
   );
