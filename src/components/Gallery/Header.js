@@ -89,6 +89,9 @@ function Header({
       case "street":
         setBackgroundVideo("/assets/street.mp4");
         return;
+      case "":
+        setBackgroundVideo("");
+        return;
       default:
         return;
     }
@@ -110,12 +113,16 @@ function Header({
   };
 
   const onMyFavorite = () => {
-    onChangeFocus(
-      "current",
-      JSON.parse(localStorage.getItem("favoriteVideosInfoArray"))
-    );
+    if (localStorage.getItem("favoriteVideosInfoArray") === "[]") {
+      setDisplayGallery(false);
+    } else {
+      onChangeFocus(
+        "current",
+        JSON.parse(localStorage.getItem("favoriteVideosInfoArray"))
+      );
 
-    setDisplayGallery(true);
+      setDisplayGallery(true);
+    }
   };
 
   return (
@@ -146,7 +153,11 @@ function Header({
                 <FavoriteIcon sx={{ color: "red" }} />
               </FavoriteWrapp>
             }
-            onClick={onMyFavorite}
+            onClick={() => {
+              onMyFavorite();
+              setCurrentTab(6);
+              changeBackgroundVideo("");
+            }}
           />
         </Tabs>
       </SearchWrapp>

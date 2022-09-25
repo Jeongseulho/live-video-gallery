@@ -4,6 +4,7 @@ import Header from "./Header";
 import ThumbnailSlide from "./ThumbnailSlide";
 import PlayerSlide from "./PlayerSlide";
 import Description from "./Description";
+import { imageListClasses } from "@mui/material";
 
 const BackGroundVideoWrapp = styled.div`
   position: fixed;
@@ -191,16 +192,20 @@ function Gallery() {
   return (
     <main>
       <BackGroundVideoWrapp>
-        <video
-          width="100%"
-          height="100%"
-          autoPlay
-          loop
-          muted
-          key={backgroundVideo}
-        >
-          <source src={backgroundVideo} type="video/mp4" />
-        </video>
+        {backgroundVideo === "" ? (
+          <img src="/assets/Favorite.jpg" alt="loading" />
+        ) : (
+          <video
+            width="100%"
+            height="100%"
+            autoPlay
+            loop
+            muted
+            key={backgroundVideo}
+          >
+            <source src={backgroundVideo} type="video/mp4" />
+          </video>
+        )}
       </BackGroundVideoWrapp>
 
       <Header

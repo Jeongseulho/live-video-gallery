@@ -78,6 +78,9 @@ function Description({ currentTab, setDisplayGallery }) {
         <p>Explore ALL Contents</p>
       </Button>
     </div>,
+    <div>
+      <h1>There is no Favorite Video</h1>
+    </div>,
   ];
 
   return <DescriptionWrapp>{tabContArr[currentTab]}</DescriptionWrapp>;
