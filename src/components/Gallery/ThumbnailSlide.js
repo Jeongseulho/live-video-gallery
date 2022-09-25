@@ -14,7 +14,12 @@ const ThumbnailSlideWrapp = styled.div`
     `}
 `;
 
-function ThumbnailSlide({ videosInfoArray, currentImgIndex }) {
+function ThumbnailSlide({
+  videosInfoArray,
+  currentImgIndex,
+  setCurrentImgIndex,
+  onChangeFocus,
+}) {
   return (
     <ThumbnailSlideWrapp currentImgIndex={currentImgIndex}>
       {videosInfoArray.map((videosInfo, index) => (
@@ -22,6 +27,8 @@ function ThumbnailSlide({ videosInfoArray, currentImgIndex }) {
           thumbnail_url={videosInfo.thumbnail_url}
           key={videosInfo.id}
           index={index}
+          setCurrentImgIndex={setCurrentImgIndex}
+          onChangeFocus={onChangeFocus}
         />
       ))}
     </ThumbnailSlideWrapp>

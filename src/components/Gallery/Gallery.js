@@ -4,7 +4,6 @@ import Header from "./Header";
 import ThumbnailSlide from "./ThumbnailSlide";
 import PlayerSlide from "./PlayerSlide";
 import Description from "./Description";
-import { imageListClasses } from "@mui/material";
 
 const BackGroundVideoWrapp = styled.div`
   position: fixed;
@@ -165,7 +164,7 @@ function Gallery() {
         setCurrentImgIndex(0);
         setVideosInfoArray(
           currentArray.map((videosInfo, index) =>
-            0 === index || 1 === index
+            0 === index
               ? { ...videosInfo, isFocused: true }
               : { ...videosInfo, isFocused: false }
           )
@@ -182,6 +181,16 @@ function Gallery() {
           )
         );
 
+        return;
+
+      case "clickThumbnail":
+        setVideosInfoArray((videosInfoArray) =>
+          videosInfoArray.map((videosInfo, index) =>
+            currentImgIndex === index
+              ? { ...videosInfo, isFocused: true }
+              : { ...videosInfo, isFocused: false }
+          )
+        );
         return;
 
       default:
@@ -232,6 +241,8 @@ function Gallery() {
           <ThumbnailSlide
             videosInfoArray={videosInfoArray}
             currentImgIndex={currentImgIndex}
+            setCurrentImgIndex={setCurrentImgIndex}
+            onChangeFocus={onChangeFocus}
           ></ThumbnailSlide>
         </WhiteBoxWrapp>
       ) : (
