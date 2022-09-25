@@ -3,24 +3,29 @@ import styled from "styled-components";
 import ReactPlayer from "react-player";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import CircularProgress from "@mui/material/CircularProgress";
 
 const PlayerWrapp = styled.div`
   position: relative;
   width: 640px;
-  height: 360px;
+  height: 384px;
   & > svg {
     cursor: pointer;
   }
-`;
-const CircularProgressWrapp = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
+  & > img {
+    position: absolute;
+    top: 28px;
+    width: 640px;
+    height: 355px;
+  }
 `;
 
-function Player({ id, isFocused, isFavorite, onToggleFavorite }) {
+function Player({
+  id,
+  isFocused,
+  isFavorite,
+  onToggleFavorite,
+  thumbnail_url,
+}) {
   return (
     <>
       {isFocused ? (
@@ -47,9 +52,7 @@ function Player({ id, isFocused, isFavorite, onToggleFavorite }) {
         </PlayerWrapp>
       ) : (
         <PlayerWrapp>
-          <CircularProgressWrapp>
-            <CircularProgress />
-          </CircularProgressWrapp>
+          <img src={thumbnail_url} alt="loading" />
         </PlayerWrapp>
       )}
     </>

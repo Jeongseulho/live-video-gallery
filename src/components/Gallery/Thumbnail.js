@@ -1,23 +1,15 @@
 import React from "react";
 
-function Thumbnail({
-  thumbnail_url,
-  index,
-  setCurrentImgIndex,
-  onChangeFocus,
-}) {
-  const onClickThumbnail = (index) => {
-    console.log(index);
-    setCurrentImgIndex(index);
-    onChangeFocus("clickThumbnail");
-  };
+function Thumbnail({ thumbnail_url, index, setCurrentImgIndex }) {
   return (
     <>
       <img
+        width="120px"
+        height="90px"
         src={thumbnail_url}
         alt="loading"
         onClick={() => {
-          onClickThumbnail(index);
+          setCurrentImgIndex(index);
         }}
       />
     </>

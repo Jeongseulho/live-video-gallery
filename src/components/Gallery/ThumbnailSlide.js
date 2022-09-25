@@ -18,7 +18,6 @@ function ThumbnailSlide({
   videosInfoArray,
   currentImgIndex,
   setCurrentImgIndex,
-  onChangeFocus,
 }) {
   return (
     <ThumbnailSlideWrapp currentImgIndex={currentImgIndex}>
@@ -28,7 +27,6 @@ function ThumbnailSlide({
           key={videosInfo.id}
           index={index}
           setCurrentImgIndex={setCurrentImgIndex}
-          onChangeFocus={onChangeFocus}
         />
       ))}
     </ThumbnailSlideWrapp>

@@ -76,7 +76,7 @@ function Gallery() {
             ? {
                 id: videoInfo.snippet.resourceId.videoId,
                 title: videoInfo.snippet.title,
-                thumbnail_url: videoInfo.snippet.thumbnails.default.url,
+                thumbnail_url: videoInfo.snippet.thumbnails.medium.url,
                 isFocused: true,
                 isFavorite: false,
                 tag,
@@ -84,7 +84,7 @@ function Gallery() {
             : {
                 id: videoInfo.snippet.resourceId.videoId,
                 title: videoInfo.snippet.title,
-                thumbnail_url: videoInfo.snippet.thumbnails.default.url,
+                thumbnail_url: videoInfo.snippet.thumbnails.medium.url,
                 isFocused: false,
                 isFavorite: false,
                 tag,
@@ -135,67 +135,39 @@ function Gallery() {
 
   const onNextSlide = () => {
     if (!(videosInfoArray.length - 1 <= currentImgIndex)) {
-      onChangeFocus("next");
       setCurrentImgIndex((prev) => prev + 1);
     }
   };
 
   const onPrevSlide = () => {
     if (!(currentImgIndex === 0)) {
-      onChangeFocus("prev");
       setCurrentImgIndex((prev) => prev - 1);
     }
   };
 
-  const onChangeFocus = (mode, currentArray) => {
-    switch (mode) {
-      case "prev":
-        setVideosInfoArray((videosInfoArray) =>
-          videosInfoArray.map((videosInfo, index) =>
-            currentImgIndex - 1 === index || currentImgIndex === index
-              ? { ...videosInfo, isFocused: true }
-              : { ...videosInfo, isFocused: false }
-          )
-        );
+  useEffect(() => {
+    onChangeFocus();
+  }, [currentImgIndex]);
 
-        return;
+  const onChangeFocus = () => {
+    setVideosInfoArray((videosInfoArray) =>
+      videosInfoArray.map((videosInfo, index) =>
+        currentImgIndex === index
+          ? { ...videosInfo, isFocused: true }
+          : { ...videosInfo, isFocused: false }
+      )
+    );
+  };
 
-      case "current":
-        setCurrentImgIndex(0);
-        setVideosInfoArray(
-          currentArray.map((videosInfo, index) =>
-            0 === index
-              ? { ...videosInfo, isFocused: true }
-              : { ...videosInfo, isFocused: false }
-          )
-        );
-
-        return;
-
-      case "next":
-        setVideosInfoArray((videosInfoArray) =>
-          videosInfoArray.map((videosInfo, index) =>
-            currentImgIndex === index || currentImgIndex + 1 === index
-              ? { ...videosInfo, isFocused: true }
-              : { ...videosInfo, isFocused: false }
-          )
-        );
-
-        return;
-
-      case "clickThumbnail":
-        setVideosInfoArray((videosInfoArray) =>
-          videosInfoArray.map((videosInfo, index) =>
-            currentImgIndex === index
-              ? { ...videosInfo, isFocused: true }
-              : { ...videosInfo, isFocused: false }
-          )
-        );
-        return;
-
-      default:
-        return;
-    }
+  const onCurrentFocus = (currentArray) => {
+    setCurrentImgIndex(0);
+    setVideosInfoArray(
+      currentArray.map((videosInfo, index) =>
+        0 === index
+          ? { ...videosInfo, isFocused: true }
+          : { ...videosInfo, isFocused: false }
+      )
+    );
   };
 
   return (
@@ -221,7 +193,7 @@ function Gallery() {
         setVideosInfoArray={setVideosInfoArray}
         setBackgroundVideo={setBackgroundVideo}
         setCurrentImgIndex={setCurrentImgIndex}
-        onChangeFocus={onChangeFocus}
+        onCurrentFocus={onCurrentFocus}
         setDisplayGallery={setDisplayGallery}
         setCurrentTab={setCurrentTab}
         allVideosInfoArray={allVideosInfoArray}
@@ -242,7 +214,6 @@ function Gallery() {
             videosInfoArray={videosInfoArray}
             currentImgIndex={currentImgIndex}
             setCurrentImgIndex={setCurrentImgIndex}
-            onChangeFocus={onChangeFocus}
           ></ThumbnailSlide>
         </WhiteBoxWrapp>
       ) : (

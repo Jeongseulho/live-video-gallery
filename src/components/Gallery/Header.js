@@ -36,7 +36,7 @@ function Header({
   setVideosInfoArray,
   setBackgroundVideo,
   setCurrentImgIndex,
-  onChangeFocus,
+  onCurrentFocus,
   setDisplayGallery,
   setCurrentTab,
   allVideosInfoArray,
@@ -53,7 +53,7 @@ function Header({
         (videosInfo) =>
           videosInfo.title.toLowerCase().includes(e.target.value.toLowerCase())
       );
-      onChangeFocus("current", searchedVideosInfoArray);
+      onCurrentFocus(searchedVideosInfoArray);
     }
   };
 
@@ -65,7 +65,7 @@ function Header({
       const filteredVideosInfoArray = allVideosInfoArray.current.filter(
         (videosInfo) => videosInfo.tag === tag
       );
-      onChangeFocus("current", filteredVideosInfoArray);
+      onCurrentFocus(filteredVideosInfoArray);
     }
   };
 
@@ -116,8 +116,7 @@ function Header({
     if (localStorage.getItem("favoriteVideosInfoArray") === "[]") {
       setDisplayGallery(false);
     } else {
-      onChangeFocus(
-        "current",
+      onCurrentFocus(
         JSON.parse(localStorage.getItem("favoriteVideosInfoArray"))
       );
 

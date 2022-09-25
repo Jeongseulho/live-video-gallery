@@ -25,6 +25,7 @@ const AllVideosWrapp = styled.div`
   position: absolute;
   transform: ${(props) => `translateX(-${640 * props.currentImgIndex}px)`};
   transition: all 2s ease-in-out;
+  height: 384px;
 `;
 
 function PlayerSlide({
@@ -75,6 +76,7 @@ function PlayerSlide({
               isFocused={videosInfo.isFocused}
               isFavorite={videosInfo.isFavorite}
               onToggleFavorite={onToggleFavorite}
+              thumbnail_url={videosInfo.thumbnail_url}
             />
           ))}
         </AllVideosWrapp>
