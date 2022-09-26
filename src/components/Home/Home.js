@@ -15,13 +15,24 @@ const Title = styled.span`
   transform: translate(-50%, -50%);
 `;
 
+const linkStyle = {
+  textDecoration: "none",
+  color: "blue",
+};
+
 function Home() {
   return (
     <HomeWrapp>
       <Title>
-        <h1>Title</h1>
-        <h5>description</h5>
-        <Link to="/gallery"> 갤러리로 </Link>,
+        <h1>Live Videos Gallery</h1>
+        <h5>This website provides a live video of my choice from YouTube.</h5>
+        <h5>
+          This video is divided into five categories, and you can choose your
+          favorite videos.
+        </h5>
+        <Link to="/gallery" style={linkStyle}>
+          Start Gallery
+        </Link>
       </Title>
     </HomeWrapp>
   );

@@ -42,40 +42,64 @@ const Button = styled.button`
 function Description({ currentTab, setDisplayGallery }) {
   const tabContArr = [
     <div>
-      <h1>all 제목</h1> <p>all 내용</p>
+      <h1>ALL Contents</h1>
+      <p>
+        ALL Contents include Space, Under Water, City, Nature, on the Train, on
+        the Boat, etc...
+      </p>
       <Button variant="outlined" onClick={() => setDisplayGallery(true)}>
         <p>Explore ALL Contents</p>
       </Button>
     </div>,
 
     <div>
-      <h1>all 제목</h1> <p>all 내용</p>
+      <h1>Space Live Videos</h1>
+      <p>
+        live videos of the Earth from the ISS, You can watch these from two
+        angles
+      </p>
       <Button variant="outlined" onClick={() => setDisplayGallery(true)}>
-        <p>Explore ALL Contents</p>
+        <p>Explore Space</p>
       </Button>
     </div>,
     <div>
-      <h1>all 제목</h1> <p>all 내용</p>
+      <h1>Land Scape Live Videos</h1>
+      <p>
+        Land Scape Live Videos include Beach, Sea, On the Train, on the Boat,
+        etc...
+      </p>
       <Button variant="outlined" onClick={() => setDisplayGallery(true)}>
-        <p>Explore ALL Contents</p>
+        <p>Explore Land Scape Live Videos</p>
       </Button>
     </div>,
     <div>
-      <h1>all 제목</h1> <p>all 내용</p>
+      <h1>Animal Live Videos</h1>
+      <p>
+        Animal Live Videos include Namib Dessert, Kalahari Dessert, Katmai
+        National Park and cats, Lions, Elephants, Pandas, etc...
+      </p>
       <Button variant="outlined" onClick={() => setDisplayGallery(true)}>
-        <p>Explore ALL Contents</p>
+        <p>Explore Animal Live Videos</p>
       </Button>
     </div>,
     <div>
-      <h1>all 제목</h1> <p>all 내용</p>
+      <h1>Under Water Live Videos</h1>
+      <p>
+        Under Water Live Videos include Deerfield Beach, Frying Pan Sea and
+        shark, etc...
+      </p>
       <Button variant="outlined" onClick={() => setDisplayGallery(true)}>
-        <p>Explore ALL Contents</p>
+        <p>Explore Under Water Live Videos</p>
       </Button>
     </div>,
     <div>
-      <h1>all 제목</h1> <p>all 내용</p>
+      <h1>Street Live Videos</h1>
+      <p>
+        Street Live Videos include Time Square, Shinjuku, New York, Venice,
+        LonDon, etc...
+      </p>
       <Button variant="outlined" onClick={() => setDisplayGallery(true)}>
-        <p>Explore ALL Contents</p>
+        <p>Explore Street Live Videos</p>
       </Button>
     </div>,
     <div>

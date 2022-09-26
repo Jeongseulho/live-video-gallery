@@ -48,13 +48,12 @@ function Header({
   };
 
   const onSearch = (e) => {
-    if (!(e.target.value === "")) {
-      const searchedVideosInfoArray = allVideosInfoArray.current.filter(
-        (videosInfo) =>
-          videosInfo.title.toLowerCase().includes(e.target.value.toLowerCase())
-      );
-      onCurrentFocus(searchedVideosInfoArray);
-    }
+    setDisplayGallery(true);
+    const searchedVideosInfoArray = allVideosInfoArray.current.filter(
+      (videosInfo) =>
+        videosInfo.title.toLowerCase().includes(e.target.value.toLowerCase())
+    );
+    onCurrentFocus(searchedVideosInfoArray);
   };
 
   const onFilterByTag = (tag) => {
