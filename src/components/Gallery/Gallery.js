@@ -103,10 +103,10 @@ function Gallery() {
     );
   };
 
-  const onCurrentFocus = (currentArray) => {
+  const onResetFocus = (newVideosInfoArray) => {
     setCurrentImgIndex(0);
     setVideosInfoArray(
-      currentArray.map((videosInfo, index) =>
+      newVideosInfoArray.map((videosInfo, index) =>
         0 === index
           ? { ...videosInfo, isFocused: true }
           : { ...videosInfo, isFocused: false }
@@ -134,10 +134,8 @@ function Gallery() {
       </BackGroundVideoWrapp>
 
       <Header
-        setVideosInfoArray={setVideosInfoArray}
         setBackgroundVideo={setBackgroundVideo}
-        setCurrentImgIndex={setCurrentImgIndex}
-        onCurrentFocus={onCurrentFocus}
+        onResetFocus={onResetFocus}
         setDisplayGallery={setDisplayGallery}
         setCurrentTab={setCurrentTab}
         allVideosInfoArray={allVideosInfoArray}

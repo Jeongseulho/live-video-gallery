@@ -33,10 +33,8 @@ const FavoriteWrapp = styled.div`
 `;
 
 function Header({
-  setVideosInfoArray,
   setBackgroundVideo,
-  setCurrentImgIndex,
-  onCurrentFocus,
+  onResetFocus,
   setDisplayGallery,
   setCurrentTab,
   allVideosInfoArray,
@@ -53,18 +51,17 @@ function Header({
       (videosInfo) =>
         videosInfo.title.toLowerCase().includes(e.target.value.toLowerCase())
     );
-    onCurrentFocus(searchedVideosInfoArray);
+    onResetFocus(searchedVideosInfoArray);
   };
 
   const onFilterByTag = (tag) => {
-    setCurrentImgIndex(0);
     if (tag === "ALL") {
-      setVideosInfoArray(allVideosInfoArray.current);
+      onResetFocus(allVideosInfoArray.current);
     } else {
       const filteredVideosInfoArray = allVideosInfoArray.current.filter(
         (videosInfo) => videosInfo.tag === tag
       );
-      onCurrentFocus(filteredVideosInfoArray);
+      onResetFocus(filteredVideosInfoArray);
     }
   };
 
@@ -96,31 +93,39 @@ function Header({
     }
   };
 
+  const displayTabVideos = (tag, index) => {
+    onFilterByTag(tag);
+    changeBackgroundVideo(tag);
+    setDisplayGallery(false);
+    setCurrentTab(index);
+  };
+
   const onTab = (tag, index) => {
     return (
       <Tab
         key={tag}
         label={tag}
         onClick={() => {
-          onFilterByTag(tag);
-          changeBackgroundVideo(tag);
-          setDisplayGallery(false);
-          setCurrentTab(index);
+          displayTabVideos(tag, index);
         }}
       />
     );
   };
 
-  const onMyFavorite = () => {
+  const onFilterByFavorite = () => {
     if (localStorage.getItem("favoriteVideosInfoArray") === "[]") {
       setDisplayGallery(false);
     } else {
-      onCurrentFocus(
-        JSON.parse(localStorage.getItem("favoriteVideosInfoArray"))
-      );
+      onResetFocus(JSON.parse(localStorage.getItem("favoriteVideosInfoArray")));
 
       setDisplayGallery(true);
     }
+  };
+
+  const displayFavoriteVideos = () => {
+    onFilterByFavorite();
+    setCurrentTab(6);
+    changeBackgroundVideo("");
   };
 
   return (
@@ -151,11 +156,7 @@ function Header({
                 <FavoriteIcon sx={{ color: "red" }} />
               </FavoriteWrapp>
             }
-            onClick={() => {
-              onMyFavorite();
-              setCurrentTab(6);
-              changeBackgroundVideo("");
-            }}
+            onClick={displayFavoriteVideos}
           />
         </Tabs>
       </SearchWrapp>
