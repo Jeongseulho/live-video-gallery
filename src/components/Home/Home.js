@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import homeImg from "../../assets/Home.jpg";
 
 const HomeWrapp = styled.div`
-  background-image: url("https://jeongseulho.github.io/live-video-gallery/assets/Home.jpg");
+  background-image: url(${homeImg});
   height: 100%;
   width: 100%;
 `;

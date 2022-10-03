@@ -6,6 +6,12 @@ import Tab from "@mui/material/Tab";
 import TextField from "@mui/material/TextField";
 import Divider from "@mui/material/Divider";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import allBackGround from "../../assets/ALL.mp4";
+import animalBackGround from "../../assets/animal.mp4";
+import landScapeBackGround from "../../assets/land-scape.mp4";
+import spaceBackGround from "../../assets/space.mp4";
+import underWaterBackGround from "../../assets/under-water.mp4";
+import streetBackGround from "../../assets/street.mp4";
 
 const HeaderWrapp = styled(Stack)`
   padding-top: 10px;
@@ -68,34 +74,22 @@ function Header({
   const changeBackgroundVideo = (tag) => {
     switch (tag) {
       case "ALL":
-        setBackgroundVideo(
-          "https://jeongseulho.github.io/live-video-gallery/assets/ALL.mp4"
-        );
+        setBackgroundVideo(allBackGround);
         return;
       case "land scape":
-        setBackgroundVideo(
-          "https://jeongseulho.github.io/live-video-gallery/assets/land scape.mp4"
-        );
+        setBackgroundVideo(landScapeBackGround);
         return;
       case "animal":
-        setBackgroundVideo(
-          "https://jeongseulho.github.io/live-video-gallery/assets/animal.mp4"
-        );
+        setBackgroundVideo(animalBackGround);
         return;
       case "space":
-        setBackgroundVideo(
-          "https://jeongseulho.github.io/live-video-gallery/assets/space.mp4"
-        );
+        setBackgroundVideo(spaceBackGround);
         return;
       case "under water":
-        setBackgroundVideo(
-          "https://jeongseulho.github.io/live-video-gallery/assets/under water.mp4"
-        );
+        setBackgroundVideo(underWaterBackGround);
         return;
       case "street":
-        setBackgroundVideo(
-          "https://jeongseulho.github.io/live-video-gallery/assets/street.mp4"
-        );
+        setBackgroundVideo(streetBackGround);
         return;
       case "":
         setBackgroundVideo("");

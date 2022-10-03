@@ -6,6 +6,7 @@ import PlayerSlide from "./PlayerSlide";
 import Description from "./Description";
 import CallApi from "../Custom/CallApi";
 import InitLocalStorage from "../Custom/InitLocalStorage";
+import favoriteImg from "../../assets/Favorite.jpg";
 
 const BackGroundVideoWrapp = styled.div`
   position: fixed;
@@ -118,10 +119,7 @@ function Gallery() {
     <main>
       <BackGroundVideoWrapp>
         {backgroundVideo === "" ? (
-          <img
-            src="https://jeongseulho.github.io/live-video-gallery/assets/Favorite.jpg"
-            alt="loading"
-          />
+          <img src={favoriteImg} alt="loading" />
         ) : (
           <video
             width="100%"
