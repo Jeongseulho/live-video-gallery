@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const HomeWrapp = styled.div`
-  background-image: url("/assets/Home.jpg");
+  background-image: url("https://jeongseulho.github.io/live-video-gallery/assets/Home.jpg");
   height: 100%;
   width: 100%;
 `;
