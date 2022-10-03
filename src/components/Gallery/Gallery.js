@@ -118,7 +118,10 @@ function Gallery() {
     <main>
       <BackGroundVideoWrapp>
         {backgroundVideo === "" ? (
-          <img src="/assets/Favorite.jpg" alt="loading" />
+          <img
+            src="https://jeongseulho.github.io/live-video-gallery/assets/Favorite.jpg"
+            alt="loading"
+          />
         ) : (
           <video
             width="100%"

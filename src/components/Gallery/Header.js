@@ -68,22 +68,34 @@ function Header({
   const changeBackgroundVideo = (tag) => {
     switch (tag) {
       case "ALL":
-        setBackgroundVideo("/assets/ALL.mp4");
+        setBackgroundVideo(
+          "https://jeongseulho.github.io/live-video-gallery/assets/ALL.mp4"
+        );
         return;
       case "land scape":
-        setBackgroundVideo("/assets/land scape.mp4");
+        setBackgroundVideo(
+          "https://jeongseulho.github.io/live-video-gallery/assets/land scape.mp4"
+        );
         return;
       case "animal":
-        setBackgroundVideo("/assets/animal.mp4");
+        setBackgroundVideo(
+          "https://jeongseulho.github.io/live-video-gallery/assets/animal.mp4"
+        );
         return;
       case "space":
-        setBackgroundVideo("/assets/space.mp4");
+        setBackgroundVideo(
+          "https://jeongseulho.github.io/live-video-gallery/assets/space.mp4"
+        );
         return;
       case "under water":
-        setBackgroundVideo("/assets/under water.mp4");
+        setBackgroundVideo(
+          "https://jeongseulho.github.io/live-video-gallery/assets/under water.mp4"
+        );
         return;
       case "street":
-        setBackgroundVideo("/assets/street.mp4");
+        setBackgroundVideo(
+          "https://jeongseulho.github.io/live-video-gallery/assets/street.mp4"
+        );
         return;
       case "":
         setBackgroundVideo("");
