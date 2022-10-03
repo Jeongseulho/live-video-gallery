@@ -41,7 +41,9 @@ const WhiteBoxWrapp = styled.div`
 `;
 
 function Gallery() {
-  const [backgroundVideo, setBackgroundVideo] = useState("/assets/ALL.mp4");
+  const [backgroundVideo, setBackgroundVideo] = useState(
+    "https://www.pexels.com/ko-kr/video/8345564/download/?fps=25.0&h=1080&w=1920"
+  );
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
   const [videosInfoArray, setVideosInfoArray] = useState([]);
   const allVideosInfoArray = useRef([]);

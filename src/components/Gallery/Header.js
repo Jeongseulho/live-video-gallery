@@ -7,12 +7,6 @@ import TextField from "@mui/material/TextField";
 import Divider from "@mui/material/Divider";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
-import animalBackGround from "../../assets/animal.mp4";
-import landScapeBackGround from "../../assets/land-scape.mp4";
-import spaceBackGround from "../../assets/space.mp4";
-import underWaterBackGround from "../../assets/under-water.mp4";
-import streetBackGround from "../../assets/street.mp4";
-
 const HeaderWrapp = styled(Stack)`
   padding-top: 10px;
   position: fixed;
@@ -75,23 +69,33 @@ function Header({
     switch (tag) {
       case "ALL":
         setBackgroundVideo(
-          "https://github.com/Jeongseulho/live-video-gallery/raw/master/src/assets/ALL.mp4"
+          "https://www.pexels.com/ko-kr/video/8345564/download/?fps=25.0&h=1080&w=1920"
         );
         return;
       case "land scape":
-        setBackgroundVideo(landScapeBackGround);
+        setBackgroundVideo(
+          "https://www.pexels.com/ko-kr/video/4471213/download/?h=1080&w=1920"
+        );
         return;
       case "animal":
-        setBackgroundVideo(animalBackGround);
+        setBackgroundVideo(
+          "https://www.pexels.com/ko-kr/video/5220279/download/?fps=25.0&h=1080&w=1920"
+        );
         return;
       case "space":
-        setBackgroundVideo(spaceBackGround);
+        setBackgroundVideo(
+          "https://www.pexels.com/ko-kr/video/3194277/download/?fps=29.97&h=1080&w=1920"
+        );
         return;
       case "under water":
-        setBackgroundVideo(underWaterBackGround);
+        setBackgroundVideo(
+          "https://www.pexels.com/ko-kr/video/3765059/download/?fps=29.97&h=1080&w=1920"
+        );
         return;
       case "street":
-        setBackgroundVideo(streetBackGround);
+        setBackgroundVideo(
+          "https://www.pexels.com/ko-kr/video/854621/download/?fps=25.0&h=1080&w=1920"
+        );
         return;
       case "":
         setBackgroundVideo("");
