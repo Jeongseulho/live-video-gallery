@@ -1,13 +1,21 @@
 {
   "files": {
     "main.css": "/live-video-gallery/static/css/main.01a36e8f.css",
-    "main.js": "/live-video-gallery/static/js/main.b53cb371.js",
+    "main.js": "/live-video-gallery/static/js/main.f5d8a9aa.js",
+    "static/media/under-water.mp4": "/live-video-gallery/static/media/under-water.2642867825726a09143c.mp4",
+    "static/media/land-scape.mp4": "/live-video-gallery/static/media/land-scape.b424ae50da4796771ff9.mp4",
+    "static/media/space.mp4": "/live-video-gallery/static/media/space.7f7675fe02a17701eeb7.mp4",
+    "static/media/ALL.mp4": "/live-video-gallery/static/media/ALL.9fc4764eb31482276b5f.mp4",
+    "static/media/animal.mp4": "/live-video-gallery/static/media/animal.ea3936ff65e6dfec88d6.mp4",
+    "static/media/street.mp4": "/live-video-gallery/static/media/street.9414962c490b50bd13ec.mp4",
+    "static/media/Home.jpg": "/live-video-gallery/static/media/Home.9043f5379ac78ffa5f11.jpg",
+    "static/media/Favorite.jpg": "/live-video-gallery/static/media/Favorite.a5f6f937494654215da3.jpg",
     "index.html": "/live-video-gallery/index.html",
     "main.01a36e8f.css.map": "/live-video-gallery/static/css/main.01a36e8f.css.map",
-    "main.b53cb371.js.map": "/live-video-gallery/static/js/main.b53cb371.js.map"
+    "main.f5d8a9aa.js.map": "/live-video-gallery/static/js/main.f5d8a9aa.js.map"
   },
   "entrypoints": [
     "static/css/main.01a36e8f.css",
-    "static/js/main.b53cb371.js"
+    "static/js/main.f5d8a9aa.js"
   ]
 }
