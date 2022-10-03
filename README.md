@@ -1,70 +1,32 @@
-# Getting Started with Create React App
+# live-video-gallery
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 웹 주소
 
-## Available Scripts
+https://jeongseulho.github.io/from-the-start/
 
-In the project directory, you can run:
+## 소개
 
-### `npm start`
+직접 모은 유튜브의 라이브 영상들의 재생목록을 가져와서 보여주는 웹 사이트입니다
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 기능 요약
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. live영상을 모은 재생목록을 api로 불러와 보여줍니다
+2. 상단 탭 메뉴를 사용해서 카테고리별 영상을 볼 수 있습니다
+3. 즐겨찾기 기능을 활용하여 Local Storage에 내 즐겨찾기 영상을 저장할 수 있습니다
 
-### `npm test`
+## 프로젝트 기간
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+기획, 디자인, 리액트 컴포넌트 구조 설계 기간 : 2022년 9월 12일 ~ 2022년 9월 14일 (3일)  
+개발 기간 : 2022년 9월 15일 ~ 27일 (13일)  
+코드 리팩토링 기간 : 9월 28일 ~ 10월 1일 (4일)  
+총 소요 기간 : 2022년 9월 12일 ~ 10월 1일 (20일)
 
-### `npm run build`
+## 팀
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- 정슬호(1인개발)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 기술
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- JavaScript, React, styled-components, MUI, react-router-dom, react-player
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 후기 및 배운점 [ - 상세보기](https://velog.io/@wjdtmfgh/%EC%B2%AB-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EB%B0%B0%EC%9A%B4%EC%A0%90-%EB%B0%8F-%ED%9B%84%EA%B8%B0)
