@@ -6,7 +6,7 @@ import Tab from "@mui/material/Tab";
 import TextField from "@mui/material/TextField";
 import Divider from "@mui/material/Divider";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import allBackGround from "../../assets/ALL.mp4";
+
 import animalBackGround from "../../assets/animal.mp4";
 import landScapeBackGround from "../../assets/land-scape.mp4";
 import spaceBackGround from "../../assets/space.mp4";
@@ -74,7 +74,9 @@ function Header({
   const changeBackgroundVideo = (tag) => {
     switch (tag) {
       case "ALL":
-        setBackgroundVideo(allBackGround);
+        setBackgroundVideo(
+          "https://github.com/Jeongseulho/live-video-gallery/raw/master/src/assets/ALL.mp4"
+        );
         return;
       case "land scape":
         setBackgroundVideo(landScapeBackGround);
