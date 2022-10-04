@@ -2,7 +2,7 @@
 
 ## 웹 주소
 
-https://jeongseulho.github.io/from-the-start/
+https://jeongseulho.github.io/live-video-gallery/
 
 ## 소개
 
@@ -29,4 +29,4 @@ https://jeongseulho.github.io/from-the-start/
 
 - JavaScript, React, styled-components, MUI, react-router-dom, react-player
 
-## 후기 및 배운점 [ - 상세보기](https://velog.io/@wjdtmfgh/%EC%B2%AB-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EB%B0%B0%EC%9A%B4%EC%A0%90-%EB%B0%8F-%ED%9B%84%EA%B8%B0)
+## 에러 사항 / 해결 방법 [ - 상세보기](https://velog.io/@wjdtmfgh/live-video-gallery-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%97%90%EB%9F%AC%EC%82%AC%ED%95%AD-%ED%95%B4%EA%B2%B0%EB%B0%A9%EB%B2%95-%ED%9B%84%EA%B8%B0)
